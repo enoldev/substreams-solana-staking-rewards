@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package substreams.v1.program;
+
+message Data {
+    repeated ClaimEvent_Event claim_event_event_list = 1;
+    repeated DepositEvent_Event deposit_event_event_list = 2;
+    repeated PoolInitializedEvent_Event pool_initialized_event_event_list = 3;
+    repeated RewardAddedEvent_Event reward_added_event_event_list = 4;
+    repeated UpdatedDistributorEvent_Event updated_distributor_event_event_list = 5;
+    repeated UpdatedDurationEvent_Event updated_duration_event_event_list = 6;
+    repeated WithdrawEvent_Event withdraw_event_event_list = 7;
+    repeated AddReward_Instruction add_reward_instruction_list = 8;
+    repeated Claim_Instruction claim_instruction_list = 9;
+    repeated Deposit_Instruction deposit_instruction_list = 10;
+    repeated InitPool_Instruction init_pool_instruction_list = 11;
+    repeated SetRewardsDistributor_Instruction set_rewards_distributor_instruction_list = 12;
+    repeated SetRewardsDuration_Instruction set_rewards_duration_instruction_list = 13;
+    repeated Withdraw_Instruction withdraw_instruction_list = 14;
+}
+message ClaimEvent_Event {
+  string trx_hash = 1;
+  string pool = 2;
+  string recipient = 3;
+  uint64 amount = 4;
+  uint64 timestamp = 5;
+}
+message DepositEvent_Event {
+  string trx_hash = 1;
+  string pool = 2;
+  string depositor = 3;
+  uint64 amount = 4;
+  uint64 timestamp = 5;
+}
+message PoolInitializedEvent_Event {
+  string trx_hash = 1;
+  string pool = 2;
+  string mint = 3;
+  string reward = 4;
+  string distributor = 5;
+  uint64 duration = 6;
+  uint64 timestamp = 7;
+}
+message RewardAddedEvent_Event {
+  string trx_hash = 1;
+  string pool = 2;
+  string contributor = 3;
+  uint64 amount = 4;
+  uint64 timestamp = 7;
+}
+message UpdatedDistributorEvent_Event {
+  string trx_hash = 1;
+  string pool = 2;
+  string new_distributor = 3;
+  uint64 timestamp = 4;
+}
+message UpdatedDurationEvent_Event {
+  string trx_hash = 1;
+  string pool = 2;
+  uint64 duration = 3;
+  uint64 timestamp = 4;
+}
+message WithdrawEvent_Event {
+  string trx_hash = 1;
+  string pool = 2;
+  string withdrawer = 3;
+  uint64 amount = 4;
+  uint64 timestamp = 5;
+}
+
+message AddReward_Instruction {
+  string trx_hash = 1;
+    uint64 amount = 2;
+    string acct_signer = 3;
+    string acct_mint = 4;
+    string acct_reward_mint = 5;
+    string acct_pool = 6;
+    string acct_pool_reward_token_account = 7;
+    string acct_user_reward_token_account = 8;
+    string acct_reward_token_program = 9;
+}
+message Claim_Instruction {
+  string trx_hash = 1;
+    string acct_signer = 2;
+    string acct_mint = 3;
+    string acct_reward_mint = 4;
+    string acct_pool = 5;
+    string acct_pool_reward_token_account = 6;
+    string acct_user = 7;
+    string acct_user_reward_token_account = 8;
+    string acct_reward_token_program = 9;
+}
+message Deposit_Instruction {
+  string trx_hash = 1;
+    uint64 amount = 2;
+    string acct_signer = 3;
+    string acct_mint = 4;
+    string acct_reward_mint = 5;
+    string acct_pool = 6;
+    string acct_pool_token_account = 7;
+    string acct_user = 8;
+    string acct_user_token_account = 9;
+    string acct_user_reward_token_account = 10;
+    string acct_token_program = 11;
+    string acct_reward_token_program = 12;
+}
+message InitPool_Instruction {
+  string trx_hash = 1;
+    uint64 duration = 2;
+    string acct_signer = 3;
+    string acct_mint = 4;
+    string acct_reward_mint = 5;
+    string acct_pool = 6;
+    string acct_pool_token_account = 7;
+    string acct_token_program = 8;
+}
+message SetRewardsDistributor_Instruction {
+  string trx_hash = 1;
+    string acct_distributor = 2;
+    string acct_mint = 3;
+    string acct_reward_mint = 4;
+    string acct_pool = 5;
+    string acct_new_distributor = 6;
+}
+message SetRewardsDuration_Instruction {
+  string trx_hash = 1;
+    uint64 duration = 2;
+    string acct_distributor = 3;
+    string acct_mint = 4;
+    string acct_reward_mint = 5;
+    string acct_pool = 6;
+}
+message Withdraw_Instruction {
+  string trx_hash = 1;
+    uint64 amount = 2;
+    string acct_signer = 3;
+    string acct_mint = 4;
+    string acct_reward_mint = 5;
+    string acct_pool = 6;
+    string acct_pool_token_account = 7;
+    string acct_user = 8;
+    string acct_user_token_account = 9;
+    string acct_token_program = 10;
+}
+
